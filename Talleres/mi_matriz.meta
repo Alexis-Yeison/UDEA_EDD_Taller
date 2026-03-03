@@ -1,0 +1,22 @@
+METADATOS DE LA MATRIZ BINARIA
+[DIMENSIONES]
+filas               = 100000
+columnas            = 100000
+total de valores    = 10,000,000,000
+
+[FORMATO DE ALMACENAMIENTO]
+tipo de valores     = binario (solo 0s y 1s)
+empaquetado         = 8 bits por byte
+bytes por fila      = 12500
+tipo de dato        = uint8 (entero sin signo de 8 bits)
+
+[TAMAÑO EN DISCO]
+megabytes           = 1250.00 MB
+gigabytes           = 1.2500 GB
+
+[CÓMO LEER ESTE ARCHIVO EN PYTHON]
+  import numpy as np
+  datos = np.memmap('mi_matriz.bin', dtype=np.uint8,
+                     mode='r', shape=(100000, 12500))
+  fila_completa = np.unpackbits(datos[0])[:COLUMNAS]
+
